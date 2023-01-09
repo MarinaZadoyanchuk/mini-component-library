@@ -3,7 +3,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { COLORS } from '../../constants';
-import VisuallyHidden from '../VisuallyHidden';
 
 const ProgressBar = ({ value, size, label = 'Loading...', max = 100 }) => {
   return (
@@ -42,23 +41,25 @@ const ProgressBase = styled.progress`
 
   appearance: none;
   height: var(--height);
-  width: 370px;
   max-width: 100%;
   box-sizing: border-box;
 
-  &::-webkit-progress-bar {
+  &::-webkit-progress-inner-element {
     background-color: ${COLORS.transparentGray15};
     border-radius: var(--border-radius);
     padding: var(--padding);
+    overflow: hidden;
+  }
+
+  &::-webkit-progress-bar {
+    background-color: transparent;
+    border-radius: var(--value-border-radius);
+    overflow: hidden;
   }
 
   &::-webkit-progress-value {
-    background-color: blue;
-    border-radius: ${({ value, max = 100 }) =>
-      value < max
-        ? 'var(--value-border-radius) 0 0 var(--value-border-radius)'
-        : 'var(--value-border-radius)'};
     background-color: ${COLORS.primary};
+    border-radius: var(--value-border-radius) 0 0 var(--value-border-radius);
   }
 `;
 
