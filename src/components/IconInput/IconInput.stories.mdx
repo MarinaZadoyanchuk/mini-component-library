@@ -27,6 +27,11 @@ import IconInput from './IconInput';
         type: 'text',
       },
     },
+    id: {
+      control: {
+        type: 'text',
+      },
+    },
   }}
 />
 
@@ -41,6 +46,7 @@ export const Template = (args) => <IconInput {...args} />;
     label: 'Search',
     icon: 'search',
     size: 'small',
+    id: 'search'
   }}
 >
   {Template.bind({})}
